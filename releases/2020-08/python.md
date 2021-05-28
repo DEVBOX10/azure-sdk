@@ -10,7 +10,7 @@ The Azure SDK team is pleased to make available the August 2020 client library r
 
 #### GA
 
-- _Add packages_
+- Storage
 
 #### Updates
 
@@ -18,6 +18,7 @@ The Azure SDK team is pleased to make available the August 2020 client library r
 - Identity
 - Text Analytics
 - Key Vault
+- Cosmos DB
 
 #### Preview
 
@@ -39,6 +40,10 @@ pip install --pre azure-search-documents
 pip install azure-keyvault-certificates
 pip install azure-keyvault-keys
 pip install azure-keyvault-secrets
+pip install azure-cosmos
+pip install azure-storage-blob
+pip install azure-storage-file-datalake
+pip install azure-storage-file-share
 ```
 
 ## Feedback
@@ -48,7 +53,6 @@ If you have a bug or feature request for one of the libraries, please post an is
 ## Changelog
 
 Detailed changelogs are linked from the [Quick Links](#quick-links) below. Here are some of the highlights:
-
 
 ### Identity [Changelog](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/CHANGELOG.md)
 
@@ -107,6 +111,34 @@ As before, please refer to the official changelog for a more complete enumeratio
 
 SearchIndexDocumentBatchingClient supports handling document indexing actions in an automatic way. It can trigger the flush method automatically based on pending tasks and idle time.
 
+### Storage
+
+#### Blob [Changelog](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/CHANGELOG.md)
+
+##### New Features
+- GA of v12.4.0, includes features from all preview versions
+- Added support for Object Replication on `list_blobs` and `get_blob_properties`
+- Added more support for Blob Tags
+- Added `rehydrate_priority` to BlobProperties
+- Added support to set tier on a snapshot or version
+
+##### Key Bug Fixes
+- Fixed bug when parsing blob url with `/` in blob name
+- Fixed `blob_samples_query` bug
+- Support batch delete empty blob list
+
+#### File DataLake [Changelog](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/CHANGELOG.md)
+
+##### New Features
+- GA of v12.1.1, includes features from all preview versions
+- Added `query_file` API to enable users to select/project on DataLake file data by providing simple query expressions.
+
+#### File Share [Changelog](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/CHANGELOG.md)
+
+##### New Features
+- GA of v12.2.0, includes features from all preview versions.
+- Stable release of preview feature `undelete_share` on FileShareServiceClient
+
 ### Key Vault
 
 - All Key Vault libraries now target the service's 7.1 API version
@@ -114,8 +146,19 @@ SearchIndexDocumentBatchingClient supports handling document indexing actions in
 #### Secrets [Changelog](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/keyvault/azure-keyvault-secrets/CHANGELOG.md#420-2020-08-11)
 #### Certificates [Changelog](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/keyvault/azure-keyvault-certificates/CHANGELOG.md#420-2020-08-11)
 
+### Cosmos DB [Changelog](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/CHANGELOG.md#410-2020-08-10)
+
+- Added deprecation warning for "lazy" indexing mode. The backend no longer allows creating containers with this mode and will set them to consistent instead.
+- Various bug fixes.
+
+
+#### New Features
+
+- Added the ability to set the analytical storage TTL when creating a new container.
+
 ## Latest Releases
 
 View all the latest versions of Python packages [here][python-latest-releases].
+
 
 {% include refs.md %}
